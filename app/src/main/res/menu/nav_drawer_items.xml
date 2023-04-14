@@ -11,6 +11,10 @@
             android:icon="@drawable/price_change"
             android:title="@string/nav_drawer_change" />
         <item
+            android:id="@+id/nav_add"
+            android:icon="@drawable/add"
+            android:title="@string/nav_drawer_add" />
+        <item
             android:id="@+id/nav_update"
             android:icon="@drawable/update"
             android:title="@string/nav_drawer_update" />

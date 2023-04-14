@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_update:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductUpdateFragment()).commit();
                 break;
+            case R.id.nav_add:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddProductFragment()).commit();
+                break;
             case R.id.nav_logout:
                 // Sign out and go back to the login activity
                 FirebaseAuth.getInstance().signOut();

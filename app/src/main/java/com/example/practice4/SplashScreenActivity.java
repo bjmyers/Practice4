@@ -17,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private TextView mSplashText;
 
-    private final int delayMs = 6000;
+    private final int delayMs = 4000;
 
     // Whimsical splash texts for loading, will pick a random one each time
     private final String[] splashTexts = new String[] {"Launching Invasion", "Recharging Warp Drive",

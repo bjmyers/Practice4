@@ -7,12 +7,20 @@
     <string name="main_product_title">Products for Sale</string>
     <string name="price_change_title">Price Change Over Last Sidereal Month</string>
     <string name="price_update_title">Update a Product</string>
+    <string name="new_product_title">Add a New Product</string>
     <string name="update_price_button">Update Price</string>
     <string name="delete_product_button">Delete</string>
+
+    <!-- Add Product Headers -->
+    <string name="add_name">Name:</string>
+    <string name="add_price">Price (units per ounce):</string>
+    <string name="add_location">Location:</string>
+    <string name="add_product">Add Product</string>
 
     <!-- Nav Drawer Items -->
     <string name="nav_full_list">All Products</string>
     <string name="nav_drawer_change">View Price Changes</string>
+    <string name="nav_drawer_add">Add Product</string>
     <string name="nav_drawer_update">Update Products</string>
     <string name="nav_drawer_logout">Logout</string>
 
