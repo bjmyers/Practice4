@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Interstellar Trader</string>
+    <string name="text_view_user">User name (or intergalactic identification protocol)</string>
+    <string name="text_view_password">Password (or meta-biological signature)</string>
+    <string name="button_sign_in">Login</string>
+    <string name="button_sign_up">Click here to Sign Up</string>
+    <string name="main_product_title">Products for Sale</string>
+</resources>
