@@ -5,8 +5,10 @@
     <string name="button_sign_in">Login</string>
     <string name="button_sign_up">Click here to Sign Up</string>
     <string name="main_product_title">Products for Sale</string>
+    <string name="price_change_title">Price Change Over Last Sidereal Month</string>
 
     <!-- Nav Drawer Items -->
+    <string name="nav_full_list">All Products</string>
     <string name="nav_drawer_change">View Price Changes</string>
     <string name="nav_drawer_update">Update Products</string>
     <string name="nav_drawer_logout">Logout</string>

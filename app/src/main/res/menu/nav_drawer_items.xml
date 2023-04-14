@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_full_list"
+            android:icon="@drawable/full_list"
+            android:title="@string/nav_full_list" />
         <item
             android:id="@+id/nav_price_change"
             android:icon="@drawable/price_change"

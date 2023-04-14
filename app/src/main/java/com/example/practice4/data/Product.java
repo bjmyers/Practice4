@@ -1,41 +1,39 @@
 package com.example.practice4.data;
 
+/**
+ * To store properly in the NoSQL database, ProductDetails objects are stored and are keyed
+ * according to their ID.
+ */
 public class Product {
 
-    private int id;
-    private String name;
-    private double price;
-    private double change;
-    private String location;
+    private String id;
+    private ProductDetails details;
 
     public Product() {
     }
 
-    public Product(int id, String name, double price, double change, String location) {
+    public Product(String id, ProductDetails details) {
         this.id = id;
-        this.name = name;
-        this.price = price;
-        this.change = change;
-        this.location = location;
+        this.details = details;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     public String getName() {
-        return name;
+        return details.getName();
     }
 
     public double getPrice() {
-        return price;
+        return details.getPrice();
     }
 
     public double getChange() {
-        return change;
+        return details.getChange();
     }
 
     public String getLocation() {
-        return location;
+        return details.getLocation();
     }
 }

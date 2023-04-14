@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,29 +35,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 R.string.navigation_drawer_open, // String to open
                 R.string.navigation_drawer_close // String to close
         );
-        /** Step 6: Include the mActionBarDrawerToggle as the listener to the DrawerLayout.
-         *  The synchState() method is used to synchronize the state of the navigation drawer */
+        // Add listener and synchronize the nav drawer
         mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
         mActionBarDrawerToggle.syncState();
 
-        /** Step 7:Set the default fragment to the HomeFragment */
+        // Start on the ProductListFragment, which is out main view
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, new ProductListFragment()).commit();
     }
 
+    // Handle navigation view item clicks here.
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {// Handle navigation view item clicks here.
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.nav_price_change:
+            case R.id.nav_full_list:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                break;
+            case R.id.nav_price_change:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PriceChangeFragment()).commit();
                 break;
             case R.id.nav_update:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
                 break;
             case R.id.nav_logout:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                // Sign out and go back to the login activity
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
         }
 
