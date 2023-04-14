@@ -1,106 +1,67 @@
 package com.example.practice4;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.MenuItem;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private EditText mEditTextUser;
-    private EditText mEditTextPassword;
-    private Button mLoginButton;
-    private Button mSignUpButton;
-
-    private FirebaseAuth mFirebaseAuth;
+    // Fields for the navigation drawer
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mActionBarDrawerToggle;
+    private NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEditTextUser = findViewById(R.id.edit_text_user);
-        mEditTextPassword = findViewById(R.id.edit_text_password);
-        mLoginButton = findViewById(R.id.button_sign_in);
-        mSignUpButton = findViewById(R.id.button_sign_up);
+        mDrawerLayout = findViewById(R.id.main_nav_layout);
+        mNavigationView = findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
-        mLoginButton.setOnClickListener(this);
-        mSignUpButton.setOnClickListener(this);
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                R.string.navigation_drawer_open, // String to open
+                R.string.navigation_drawer_close // String to close
+        );
+        /** Step 6: Include the mActionBarDrawerToggle as the listener to the DrawerLayout.
+         *  The synchState() method is used to synchronize the state of the navigation drawer */
+        mDrawerLayout.addDrawerListener(mActionBarDrawerToggle);
+        mActionBarDrawerToggle.syncState();
+
+        /** Step 7:Set the default fragment to the HomeFragment */
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new ProductListFragment()).commit();
     }
 
     @Override
-    public void onClick(View v) {
-        /** Implement the integration with Firebase Authentication */
-        String email = mEditTextUser.getText().toString();
-        String password = mEditTextPassword.getText().toString();
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {// Handle navigation view item clicks here.
+        int id = item.getItemId();
 
-        /** Create an instance of the Firebase Authentication component */
-        mFirebaseAuth = FirebaseAuth.getInstance();
-
-        /** Check if the user email and password are valid */
-        if (TextUtils.isEmpty(email)) {
-            mEditTextUser.setHint("An email is required.");
-            mEditTextUser.setHintTextColor(Color.RED);
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            mEditTextPassword.setHint("Please type the correct password.");
-            mEditTextPassword.setHintTextColor(Color.RED);
-            return;
+        switch (id) {
+            case R.id.nav_price_change:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                break;
+            case R.id.nav_update:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                break;
+            case R.id.nav_logout:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                break;
         }
 
-        /** If the user's input have the correct information, we need to invoke the
-         * signInWithEmailAndPassword method.*/
+        // Close the navigation drawer
+        mDrawerLayout.closeDrawer(GravityCompat.START);
 
-        switch (v.getId()){
-            case R.id.button_sign_in: SignIn(email, password); break;
-            case R.id.button_sign_up: SignUp(email, password); break;
-        }
-    }
-
-    private void SignIn(String email, String password){
-        mFirebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
-                            intent.putExtra("email", email);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private void SignUp(String email, String password){
-        mFirebaseAuth.createUserWithEmailAndPassword(email, password).
-                addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                            Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
-                            intent.putExtra("email", user.getEmail());
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                });
+        return true;
     }
 }

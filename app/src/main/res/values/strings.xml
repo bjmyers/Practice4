@@ -5,4 +5,13 @@
     <string name="button_sign_in">Login</string>
     <string name="button_sign_up">Click here to Sign Up</string>
     <string name="main_product_title">Products for Sale</string>
+
+    <!-- Nav Drawer Items -->
+    <string name="nav_drawer_change">View Price Changes</string>
+    <string name="nav_drawer_update">Update Products</string>
+    <string name="nav_drawer_logout">Logout</string>
+
+    <!-- Misc Nav Drawer stuff -->
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">CLose</string>
 </resources>
