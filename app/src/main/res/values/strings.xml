@@ -6,6 +6,9 @@
     <string name="button_sign_up">Click here to Sign Up</string>
     <string name="main_product_title">Products for Sale</string>
     <string name="price_change_title">Price Change Over Last Sidereal Month</string>
+    <string name="price_update_title">Update a Product</string>
+    <string name="update_price_button">Update Price</string>
+    <string name="delete_product_button">Delete</string>
 
     <!-- Nav Drawer Items -->
     <string name="nav_full_list">All Products</string>

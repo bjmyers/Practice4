@@ -8,12 +8,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/price_change_title"
+        android:text="@string/price_update_title"
         android:textColor="@color/yellow"
         android:textSize="32dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/price_change_recycler_view"
+        android:id="@+id/product_update_recycler_view"
         android:layout_height="650dp"
         android:layout_width="match_parent"/>
 

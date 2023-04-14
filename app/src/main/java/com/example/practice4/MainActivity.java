@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PriceChangeFragment()).commit();
                 break;
             case R.id.nav_update:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductListFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProductUpdateFragment()).commit();
                 break;
             case R.id.nav_logout:
                 // Sign out and go back to the login activity
